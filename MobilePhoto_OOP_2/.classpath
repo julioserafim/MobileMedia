@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="lib" path="/home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-2/jars/midp_2.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-2/jars/net_rim_api.jar"/>
+	<classpathentry exported="true" kind="lib" path="/usr/lib/jvm/java-8-oracle/lib/tools.jar"/>
+	<classpathentry exported="true" kind="lib" path="/home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-2/jars/antenna-bin-0.9.15-beta.jar"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

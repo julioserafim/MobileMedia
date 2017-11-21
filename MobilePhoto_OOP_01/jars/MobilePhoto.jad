@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+MIDlet-Version: 1.0.0
+MIDlet-Jar-Size: 0
+Created-By: 1.4.1_02-b06 (Sun Microsystems Inc.)
+MicroEdition-Configuration: CLDC-1.0
+MIDlet-Jar-URL: MobilePhoto.jar
+RIM-COD-Module-Dependencies: net_rim_cldc,net_rim_bbapi_mailv2
+RIM-COD-Module-Name: MobilePhoto
+MIDlet-Name: MobilePhoto
+RIM-COD-Size: 172504
+RIM-COD-Creation-Time: 1122661381
+RIM-COD-URL: MobilePhoto.cod
+iDEN-MIDlet-Phone: ubc.midp.mobilephoto.core.ui.MainUIMidlet
+RIM-COD-SHA1: 03 09 84 38 11 05 9d c9 4d ee b9 e4 aa 49 20 a0 45 4b 7f a2
+MicroEdition-Profile: MIDP-1.0
+MIDlet-Vendor: Trevor Young
+Ant-Version: Apache Ant 1.6.2
+MIDlet-1: MobilePhoto, , ubc.midp.mobilephoto.core.ui.MainUIMidlet

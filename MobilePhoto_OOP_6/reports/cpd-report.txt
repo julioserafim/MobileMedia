@@ -1,0 +1,782 @@
+Found a 18 line (148 tokens) duplication in the following files: 
+Starting at line 97 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 124 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoViewController.java
+
+						((AddPhotoToAlbum) getCurrentScreen()).getPath(), getCurrentStoreName());
+			} catch (InvalidImageDataException e) {
+				Alert alert = null;
+				if (e instanceof ImagePathNotValidException)
+					alert = new Alert("Error", "The path is not valid", null, AlertType.ERROR);
+				else
+					alert = new Alert("Error", "The image file format is not valid", null, AlertType.ERROR);
+				Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+				return true;
+				// alert.setTimeout(5000);
+			} catch (PersistenceMechanismException e) {
+				Alert alert = null;
+				if (e.getCause() instanceof RecordStoreFullException)
+					alert = new Alert("Error", "The mobile database is full", null, AlertType.ERROR);
+				else
+					alert = new Alert("Error", "The mobile database can not add a new photo", null, AlertType.ERROR);
+				Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+			}
+=====================================================================
+Found a 10 line (112 tokens) duplication in the following files: 
+Starting at line 65 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 184 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+
+				System.out.println("<* BaseController.handleCommand() *> Image = " + selectedImageName + "; # views = " + image.getNumberOfViews());
+			} catch (ImageNotFoundException e) {
+				Alert alert = new Alert("Error", "The selected photo was not found in the mobile device", null, AlertType.ERROR);
+				Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+			} catch (NullAlbumDataReference e) {
+				this.setAlbumData( new AlbumData() );
+				Alert alert = new Alert( "Error", "The operation is not available. Try again later !", null, AlertType.ERROR);
+				Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+			}catch (InvalidImageDataException e) {
+				Alert alert = new Alert( "Error", "The image data is not valid", null, AlertType.ERROR);
+=====================================================================
+Found a 9 line (101 tokens) duplication in the following files: 
+Starting at line 65 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 184 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 95 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoViewController.java
+
+				System.out.println("<* BaseController.handleCommand() *> Image = " + selectedImageName + "; # views = " + image.getNumberOfViews());
+			} catch (ImageNotFoundException e) {
+				Alert alert = new Alert("Error", "The selected photo was not found in the mobile device", null, AlertType.ERROR);
+				Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+			} catch (NullAlbumDataReference e) {
+				this.setAlbumData( new AlbumData() );
+				Alert alert = new Alert( "Error", "The operation is not available. Try again later !", null, AlertType.ERROR);
+				Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+			}catch (InvalidImageDataException e) {
+=====================================================================
+Found a 8 line (100 tokens) duplication in the following files: 
+Starting at line 66 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 149 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 185 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 96 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoViewController.java
+
+			} catch (ImageNotFoundException e) {
+				Alert alert = new Alert("Error", "The selected photo was not found in the mobile device", null, AlertType.ERROR);
+				Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+			} catch (NullAlbumDataReference e) {
+				this.setAlbumData( new AlbumData() );
+				Alert alert = new Alert( "Error", "The operation is not available. Try again later !", null, AlertType.ERROR);
+				Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+			}catch (InvalidImageDataException e) {
+=====================================================================
+Found a 19 line (89 tokens) duplication in the following files: 
+Starting at line 212 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/datamodel/ImageAccessor.java
+Starting at line 270 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/datamodel/ImageAccessor.java
+
+			byte[] data1 = converter.readImageAsByteArray(path);
+			rid = imageRS.addRecord(data1, 0, data1.length);
+			ImageData ii = new ImageData(rid, ImageAccessor.ALBUM_LABEL
+					+ albumname, photoname);
+			rid2 = imageInfoRS.getNextRecordID();
+			ii.setRecordId(rid2);
+			data1 = converter.getBytesFromImageInfo(ii);
+			imageInfoRS.addRecord(data1, 0, data1.length);
+
+			imageRS.closeRecordStore();
+
+			imageInfoRS.closeRecordStore();
+		} catch (RecordStoreException e) {
+			throw new PersistenceMechanismException();
+		}
+	}
+	// #ifdef includeSmsFeature
+	/* [NC] Added in scenario 06 */
+	public byte[] getByteFromImage(Image img){
+=====================================================================
+Found a 10 line (81 tokens) duplication in the following files: 
+Starting at line 191 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 226 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+
+				Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+			} catch (InvalidImageDataException e) {
+				Alert alert = null;
+				if (e instanceof ImagePathNotValidException)
+					alert = new Alert("Error", "The path is not valid", null, AlertType.ERROR);
+				else
+					alert = new Alert("Error", "The image file format is not valid", null, AlertType.ERROR);
+				Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+			} catch (PersistenceMechanismException e) {
+				Alert alert = null;
+=====================================================================
+Found a 8 line (73 tokens) duplication in the following files: 
+Starting at line 97 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 191 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+
+						((AddPhotoToAlbum) getCurrentScreen()).getPath(), getCurrentStoreName());
+			} catch (InvalidImageDataException e) {
+				Alert alert = null;
+				if (e instanceof ImagePathNotValidException)
+					alert = new Alert("Error", "The path is not valid", null, AlertType.ERROR);
+				else
+					alert = new Alert("Error", "The image file format is not valid", null, AlertType.ERROR);
+				Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+=====================================================================
+Found a 8 line (71 tokens) duplication in the following files: 
+Starting at line 97 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 226 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+
+						((AddPhotoToAlbum) getCurrentScreen()).getPath(), getCurrentStoreName());
+			} catch (InvalidImageDataException e) {
+				Alert alert = null;
+				if (e instanceof ImagePathNotValidException)
+					alert = new Alert("Error", "The path is not valid", null, AlertType.ERROR);
+				else
+					alert = new Alert("Error", "The image file format is not valid", null, AlertType.ERROR);
+				Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+=====================================================================
+Found a 8 line (71 tokens) duplication in the following files: 
+Starting at line 191 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 124 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoViewController.java
+
+				Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+			} catch (InvalidImageDataException e) {
+				Alert alert = null;
+				if (e instanceof ImagePathNotValidException)
+					alert = new Alert("Error", "The path is not valid", null, AlertType.ERROR);
+				else
+					alert = new Alert("Error", "The image file format is not valid", null, AlertType.ERROR);
+				Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+=====================================================================
+Found a 6 line (58 tokens) duplication in the following files: 
+Starting at line 68 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 187 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 87 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/sms/SmsSenderController.java
+
+				Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+			} catch (NullAlbumDataReference e) {
+				this.setAlbumData( new AlbumData() );
+				Alert alert = new Alert( "Error", "The operation is not available. Try again later !", null, AlertType.ERROR);
+				Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+			}catch (InvalidImageDataException e) {
+=====================================================================
+Found a 6 line (56 tokens) duplication in the following files: 
+Starting at line 155 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 98 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoViewController.java
+Starting at line 87 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/sms/SmsSenderController.java
+
+						Display.getDisplay(midlet).getCurrent());
+			} catch (NullAlbumDataReference e) {
+				this.setAlbumData( new AlbumData() );
+				Alert alert = new Alert( "Error", "The operation is not available. Try again later !", null, AlertType.ERROR);
+				Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+			}
+=====================================================================
+Found a 21 line (51 tokens) duplication in the following files: 
+Starting at line 192 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/datamodel/ImageAccessor.java
+Starting at line 249 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/datamodel/ImageAccessor.java
+
+	public void addImageData(String photoname, String path, String albumname)
+			throws InvalidImageDataException, PersistenceMechanismException {
+
+		try {
+			imageRS = RecordStore
+					.openRecordStore(ALBUM_LABEL + albumname, true);
+			imageInfoRS = RecordStore.openRecordStore(INFO_LABEL + albumname,
+					true);
+
+			int rid; // new record ID for Image (bytes)
+			int rid2; // new record ID for ImageData (metadata)
+
+			ImageUtil converter = new ImageUtil();
+
+			// NOTE: For some Siemen's phone, all images have to be less than
+			// 16K
+			// May have to check for this, or try to convert to a lesser format
+			// for display on Siemen's phones (Could put this in an Aspect)
+
+			// Add Tucan
+			byte[] data1 = converter.readImageAsByteArray(path);
+=====================================================================
+Found a 11 line (50 tokens) duplication in the following files: 
+Starting at line 53 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoViewController.java
+Starting at line 51 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/sms/SmsSenderController.java
+
+	public PhotoViewController(MainUIMidlet midlet, AlbumData albumData, AlbumListScreen albumListScreen, String imageName) {
+		super(midlet, albumData, albumListScreen);
+		this.imageName = imageName;
+	}
+
+	/* (non-Javadoc)
+	 * @see ubc.midp.mobilephoto.core.ui.controller.ControllerInterface#handleCommand(javax.microedition.lcdui.Command, javax.microedition.lcdui.Displayable)
+	 */
+	public boolean handleCommand(Command c) {
+		String label = c.getLabel();
+		System.out.println( "<* PhotoViewController.handleCommand() *> " + label);
+=====================================================================
+Found a 4 line (46 tokens) duplication in the following files: 
+Starting at line 65 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 184 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 279 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 95 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoViewController.java
+
+				System.out.println("<* BaseController.handleCommand() *> Image = " + selectedImageName + "; # views = " + image.getNumberOfViews());
+			} catch (ImageNotFoundException e) {
+				Alert alert = new Alert("Error", "The selected photo was not found in the mobile device", null, AlertType.ERROR);
+				Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+=====================================================================
+Found a 4 line (46 tokens) duplication in the following files: 
+Starting at line 125 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 280 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+
+			} catch (ImageNotFoundException e) {
+				Alert alert = new Alert("Error", "The selected photo was not found in the mobile device", null, AlertType.ERROR);
+				Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+				return true;
+=====================================================================
+Found a 7 line (45 tokens) duplication in the following files: 
+Starting at line 132 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/AlbumController.java
+Starting at line 198 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+
+        	getAlbumData().resetImageData();
+		} catch (PersistenceMechanismException e) {
+			Alert alert = null;
+			if (e.getCause() instanceof  RecordStoreFullException)
+				alert = new Alert( "Error", "The mobile database is full", null, AlertType.ERROR);
+			else
+				alert = new Alert( "Error", "It is not possible to reset the database", null, AlertType.ERROR);
+=====================================================================
+Found a 3 line (45 tokens) duplication in the following files: 
+Starting at line 66 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 125 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 149 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 185 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 280 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 96 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoViewController.java
+
+			} catch (ImageNotFoundException e) {
+				Alert alert = new Alert("Error", "The selected photo was not found in the mobile device", null, AlertType.ERROR);
+				Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+=====================================================================
+Found a 6 line (44 tokens) duplication in the following files: 
+Starting at line 104 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/AlbumController.java
+Starting at line 133 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/AlbumController.java
+Starting at line 107 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 199 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 138 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoViewController.java
+
+			} catch (PersistenceMechanismException e) {
+				Alert alert = null;
+				if (e.getCause() instanceof  RecordStoreFullException)
+					alert = new Alert( "Error", "The mobile database is full", null, AlertType.ERROR);
+				else
+					alert = new Alert( "Error", "The mobile database can not add a new photo album", null, AlertType.ERROR);
+=====================================================================
+Found a 7 line (44 tokens) duplication in the following files: 
+Starting at line 149 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/AlbumController.java
+Starting at line 46 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/BaseController.java
+
+        String[] albumNames = getAlbumData().getAlbumNames();
+        for (int i = 0; i < albumNames.length; i++) {
+        	if (albumNames[i] != null) {
+        		//Add album name to menu list
+        		getAlbumListScreen().append(albumNames[i], null);
+        	}
+        }
+=====================================================================
+Found a 4 line (44 tokens) duplication in the following files: 
+Starting at line 232 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 90 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/sms/SmsSenderController.java
+
+						alert = new Alert("Error", "The image file format is not valid", null, AlertType.ERROR);
+					Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+				} catch (PersistenceMechanismException e) {
+					Alert alert = new Alert("Error", "The mobile database can not update this photo", null, AlertType.ERROR);
+=====================================================================
+Found a 10 line (43 tokens) duplication in the following files: 
+Starting at line 97 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/BaseController.java
+Starting at line 152 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoViewController.java
+
+				(currentScreenName.equals(Constants.CONFIRMDELETEALBUM_SCREEN)) ){
+			getAlbumListScreen().repaintListAlbum(getAlbumData().getAlbumNames());
+			setCurrentScreen( getAlbumListScreen() );
+			ScreenSingleton.getInstance().setCurrentScreenName(Constants.ALBUMLIST_SCREEN);
+			return true;
+		}
+    	
+		return false;
+    }
+}
+=====================================================================
+Found a 6 line (43 tokens) duplication in the following files: 
+Starting at line 74 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 70 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/screens/PhotoViewScreen.java
+
+				Alert alert = new Alert( "Error", "The image data is not valid", null, AlertType.ERROR);
+		        alert.setTimeout(5000);
+			} catch (PersistenceMechanismException e) {
+				Alert alert = new Alert( "Error", "It was not possible to recovery the selected image", null, AlertType.ERROR);
+		        alert.setTimeout(5000);
+			}
+=====================================================================
+Found a 10 line (42 tokens) duplication in the following files: 
+Starting at line 33 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/AlbumController.java
+Starting at line 47 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+
+	public AlbumController(MainUIMidlet midlet, AlbumData albumData, AlbumListScreen albumListScreen) {
+		super(midlet, albumData, albumListScreen);
+	}
+	
+	/* (non-Javadoc)
+	 * @see ubc.midp.mobilephoto.core.ui.controller.ControllerInterface#handleCommand(javax.microedition.lcdui.Command, javax.microedition.lcdui.Displayable)
+	 */
+	public boolean handleCommand(Command command) {
+		String label = command.getLabel();
+      	System.out.println( "<* AlbumController.handleCommand() *>: " + label);
+=====================================================================
+Found a 6 line (42 tokens) duplication in the following files: 
+Starting at line 112 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 235 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+
+					alert = new Alert("Error", "The mobile database can not add a new photo", null, AlertType.ERROR);
+				Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+			}
+			return goToPreviousScreen();
+			/** Case: Delete selected Photo from recordstore * */
+		} else if (label.equals("Delete")) {
+=====================================================================
+Found a 9 line (41 tokens) duplication in the following files: 
+Starting at line 97 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/BaseController.java
+Starting at line 152 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoViewController.java
+Starting at line 56 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/sms/SmsReceiverController.java
+
+				(currentScreenName.equals(Constants.CONFIRMDELETEALBUM_SCREEN)) ){
+			getAlbumListScreen().repaintListAlbum(getAlbumData().getAlbumNames());
+			setCurrentScreen( getAlbumListScreen() );
+			ScreenSingleton.getInstance().setCurrentScreenName(Constants.ALBUMLIST_SCREEN);
+			return true;
+		}
+    	
+		return false;
+    }
+=====================================================================
+Found a 10 line (40 tokens) duplication in the following files: 
+Starting at line 158 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 204 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+
+				Alert alert = new Alert( "Error", "The operation is not available. Try again later !", null, AlertType.ERROR);
+				Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+			}
+			return true;
+
+		// #ifdef includeCountViews
+		/**
+		 * Case: Sort photos by number of views 
+		 * [EF] Added in the scenario 02 */
+		} else if (label.equals("Sort by Views")) {
+=====================================================================
+Found a 4 line (39 tokens) duplication in the following files: 
+Starting at line 197 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 90 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/sms/SmsSenderController.java
+
+					alert = new Alert("Error", "The image file format is not valid", null, AlertType.ERROR);
+				Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+			} catch (PersistenceMechanismException e) {
+				Alert alert = null;
+=====================================================================
+Found a 5 line (38 tokens) duplication in the following files: 
+Starting at line 148 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoViewController.java
+Starting at line 50 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/sms/SmsReceiverController.java
+
+		  	getAlbumListScreen().repaintListAlbum(getAlbumData().getAlbumNames());
+			setCurrentScreen( getAlbumListScreen() );
+			ScreenSingleton.getInstance().setCurrentScreenName(Constants.ALBUMLIST_SCREEN);
+			return true;
+		}else if ((label.equals("Cancel")) || (label.equals("Back"))){
+=====================================================================
+Found a 9 line (36 tokens) duplication in the following files: 
+Starting at line 33 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/AlbumController.java
+Starting at line 47 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 37 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoListController.java
+
+	public AlbumController(MainUIMidlet midlet, AlbumData albumData, AlbumListScreen albumListScreen) {
+		super(midlet, albumData, albumListScreen);
+	}
+	
+	/* (non-Javadoc)
+	 * @see ubc.midp.mobilephoto.core.ui.controller.ControllerInterface#handleCommand(javax.microedition.lcdui.Command, javax.microedition.lcdui.Displayable)
+	 */
+	public boolean handleCommand(Command command) {
+		String label = command.getLabel();
+=====================================================================
+Found a 12 line (36 tokens) duplication in the following files: 
+Starting at line 79 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/BaseController.java
+Starting at line 241 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+
+		} else if (label.equals("Back")) {
+			return goToPreviousScreen();
+
+			/** Case: Cancel the current screen and go back one* */
+		} else if (label.equals("Cancel")) {
+			return goToPreviousScreen();
+
+		}
+
+		//If we couldn't handle the current command, return false
+        return false;
+    }
+=====================================================================
+Found a 10 line (36 tokens) duplication in the following files: 
+Starting at line 192 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/datamodel/ImageAccessor.java
+Starting at line 249 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/datamodel/ImageAccessor.java
+Starting at line 298 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/datamodel/ImageAccessor.java
+
+	public void addImageData(String photoname, String path, String albumname)
+			throws InvalidImageDataException, PersistenceMechanismException {
+
+		try {
+			imageRS = RecordStore
+					.openRecordStore(ALBUM_LABEL + albumname, true);
+			imageInfoRS = RecordStore.openRecordStore(INFO_LABEL + albumname,
+					true);
+
+			int rid; // new record ID for Image (bytes)
+=====================================================================
+Found a 5 line (35 tokens) duplication in the following files: 
+Starting at line 98 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/BaseController.java
+Starting at line 148 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoViewController.java
+Starting at line 153 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoViewController.java
+Starting at line 50 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/sms/SmsReceiverController.java
+Starting at line 58 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/sms/SmsReceiverController.java
+
+			getAlbumListScreen().repaintListAlbum(getAlbumData().getAlbumNames());
+			setCurrentScreen( getAlbumListScreen() );
+			ScreenSingleton.getInstance().setCurrentScreenName(Constants.ALBUMLIST_SCREEN);
+			return true;
+		}
+=====================================================================
+Found a 4 line (34 tokens) duplication in the following files: 
+Starting at line 109 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/AlbumController.java
+Starting at line 103 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 122 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 134 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoViewController.java
+
+					alert = new Alert( "Error", "The mobile database can not add a new photo album", null, AlertType.ERROR);
+				Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+				return true;
+		    } catch (InvalidPhotoAlbumNameException e) {
+=====================================================================
+Found a 7 line (34 tokens) duplication in the following files: 
+Starting at line 26 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/screens/AddPhotoToAlbum.java
+Starting at line 34 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/screens/NewLabelScreen.java
+
+		ok = new Command("Save Photo", Command.SCREEN, 0);
+		cancel = new Command("Cancel", Command.EXIT, 1);
+		this.addCommand(ok);
+		this.addCommand(cancel);
+	}
+	
+	public String getPhotoName(){
+=====================================================================
+Found a 4 line (33 tokens) duplication in the following files: 
+Starting at line 160 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/AlbumController.java
+Starting at line 49 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/sms/SmsReceiverController.java
+
+	    System.out.println("<* AlbumController.goToPreviousScreen() *>");
+		getAlbumListScreen().repaintListAlbum(getAlbumData().getAlbumNames());
+		setCurrentScreen( getAlbumListScreen() );
+		ScreenSingleton.getInstance().setCurrentScreenName(Constants.ALBUMLIST_SCREEN);
+=====================================================================
+Found a 5 line (33 tokens) duplication in the following files: 
+Starting at line 68 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/screens/PhotoViewScreen.java
+Starting at line 84 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/sms/SmsSenderController.java
+
+			loadImage();
+		} catch (ImageNotFoundException e) {
+			Alert alert = new Alert( "Error", "The selected image can not be found", null, AlertType.ERROR);
+	        alert.setTimeout(5000);
+		} catch (PersistenceMechanismException e) {
+=====================================================================
+Found a 4 line (32 tokens) duplication in the following files: 
+Starting at line 109 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/AlbumController.java
+Starting at line 113 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/AlbumController.java
+Starting at line 103 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 122 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 126 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 134 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoViewController.java
+
+					alert = new Alert( "Error", "The mobile database can not add a new photo album", null, AlertType.ERROR);
+				Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+				return true;
+		    } catch (InvalidPhotoAlbumNameException e) {
+=====================================================================
+Found a 3 line (32 tokens) duplication in the following files: 
+Starting at line 161 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/AlbumController.java
+Starting at line 98 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/BaseController.java
+Starting at line 148 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoViewController.java
+Starting at line 153 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoViewController.java
+Starting at line 58 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/sms/SmsReceiverController.java
+
+		getAlbumListScreen().repaintListAlbum(getAlbumData().getAlbumNames());
+		setCurrentScreen( getAlbumListScreen() );
+		ScreenSingleton.getInstance().setCurrentScreenName(Constants.ALBUMLIST_SCREEN);
+=====================================================================
+Found a 3 line (32 tokens) duplication in the following files: 
+Starting at line 67 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 71 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 152 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 186 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 190 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 197 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 232 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 97 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoViewController.java
+Starting at line 90 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/sms/SmsSenderController.java
+
+				Alert alert = new Alert("Error", "The selected photo was not found in the mobile device", null, AlertType.ERROR);
+				Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+			} catch (NullAlbumDataReference e) {
+=====================================================================
+Found a 4 line (31 tokens) duplication in the following files: 
+Starting at line 138 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/AlbumController.java
+Starting at line 281 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 285 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 82 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoListController.java
+
+				alert = new Alert( "Error", "It is not possible to reset the database", null, AlertType.ERROR);
+			Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent()); // TODO [EF] weird
+	        return;
+		}
+=====================================================================
+Found a 5 line (31 tokens) duplication in the following files: 
+Starting at line 75 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 71 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/screens/PhotoViewScreen.java
+Starting at line 91 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/sms/SmsSenderController.java
+
+		        alert.setTimeout(5000);
+			} catch (PersistenceMechanismException e) {
+				Alert alert = new Alert( "Error", "It was not possible to recovery the selected image", null, AlertType.ERROR);
+		        alert.setTimeout(5000);
+			}
+=====================================================================
+Found a 4 line (31 tokens) duplication in the following files: 
+Starting at line 112 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 158 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 204 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 235 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+
+					alert = new Alert("Error", "The mobile database can not add a new photo", null, AlertType.ERROR);
+				Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+			}
+			return goToPreviousScreen();
+=====================================================================
+Found a 6 line (31 tokens) duplication in the following files: 
+Starting at line 64 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/sms/SmsReceiverThread.java
+Starting at line 75 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/sms/SmsReceiverThread.java
+
+			} catch (InterruptedIOException e) {
+				Alert alert = new Alert("Error Incoming Photo");
+				alert.setString("" +
+						"You have just received a bad fragmentated photo which was not possible to recovery.");
+				alert.addCommand(errorNotice);
+				System.out.println("Error interreput");
+=====================================================================
+Found a 3 line (30 tokens) duplication in the following files: 
+Starting at line 80 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/AlbumController.java
+Starting at line 67 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 71 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 112 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 152 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 158 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 186 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 190 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 197 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 204 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 232 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 235 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 97 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoViewController.java
+Starting at line 101 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoViewController.java
+Starting at line 143 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoViewController.java
+Starting at line 90 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/sms/SmsSenderController.java
+
+				Alert alert = new Alert( "Error", "The mobile database can not delete this photo album", null, AlertType.ERROR);
+		        Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+			}
+=====================================================================
+Found a 3 line (30 tokens) duplication in the following files: 
+Starting at line 109 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/AlbumController.java
+Starting at line 113 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/AlbumController.java
+Starting at line 138 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/AlbumController.java
+Starting at line 103 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 122 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 126 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 281 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 285 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 82 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoListController.java
+Starting at line 134 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoViewController.java
+
+					alert = new Alert( "Error", "The mobile database can not add a new photo album", null, AlertType.ERROR);
+				Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+				return true;
+=====================================================================
+Found a 11 line (30 tokens) duplication in the following files: 
+Starting at line 329 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 52 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoListController.java
+
+    		showImageList(getCurrentStoreName(), false, false);
+		    ScreenSingleton.getInstance().setCurrentScreenName(Constants.IMAGELIST_SCREEN);
+		    return true;
+    	}
+	    return false;
+    } 
+
+	/**
+	 * @param image the image to set
+	 */
+	public void setImage(ImageData image) {
+=====================================================================
+Found a 7 line (30 tokens) duplication in the following files: 
+Starting at line 26 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/screens/AddPhotoToAlbum.java
+Starting at line 34 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/screens/NewLabelScreen.java
+Starting at line 35 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/sms/NetworkScreen.java
+
+		ok = new Command("Save Photo", Command.SCREEN, 0);
+		cancel = new Command("Cancel", Command.EXIT, 1);
+		this.addCommand(ok);
+		this.addCommand(cancel);
+	}
+	
+	public String getPhotoName(){
+=====================================================================
+Found a 7 line (30 tokens) duplication in the following files: 
+Starting at line 124 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/util/ImageUtil.java
+Starting at line 144 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/util/ImageUtil.java
+
+			String albumLabel = iiString.substring(startIndex, endIndex);
+
+			startIndex = endIndex + 1;
+			endIndex = iiString.indexOf(DELIMITER, startIndex);
+			
+			if (endIndex == -1)
+				endIndex = iiString.length();
+=====================================================================
+Found a 2 line (29 tokens) duplication in the following files: 
+Starting at line 80 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/AlbumController.java
+Starting at line 109 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/AlbumController.java
+Starting at line 113 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/AlbumController.java
+Starting at line 138 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/AlbumController.java
+Starting at line 67 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 71 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 103 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 112 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 122 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 126 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 152 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 158 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 186 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 190 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 197 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 204 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 232 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 235 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 281 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 285 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 82 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoListController.java
+Starting at line 97 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoViewController.java
+Starting at line 101 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoViewController.java
+Starting at line 134 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoViewController.java
+Starting at line 143 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoViewController.java
+Starting at line 90 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/sms/SmsSenderController.java
+
+				Alert alert = new Alert( "Error", "The mobile database can not delete this photo album", null, AlertType.ERROR);
+		        Display.getDisplay(midlet).setCurrent(alert, Display.getDisplay(midlet).getCurrent());
+=====================================================================
+Found a 5 line (29 tokens) duplication in the following files: 
+Starting at line 126 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/util/ImageUtil.java
+Starting at line 138 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/util/ImageUtil.java
+Starting at line 149 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/util/ImageUtil.java
+
+			startIndex = endIndex + 1;
+			endIndex = iiString.indexOf(DELIMITER, startIndex);
+			
+			if (endIndex == -1)
+				endIndex = iiString.length();
+=====================================================================
+Found a 7 line (28 tokens) duplication in the following files: 
+Starting at line 130 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 324 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+
+			showImageList(getCurrentStoreName(), false, false);
+			ScreenSingleton.getInstance().setCurrentScreenName(Constants.IMAGELIST_SCREEN);
+			return true;
+
+		/** Case: Edit photo label
+		 *  [EF] Added in the scenario 02 */
+		} else if (label.equals("Edit Label")) {
+=====================================================================
+Found a 6 line (28 tokens) duplication in the following files: 
+Starting at line 322 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 328 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+
+		} else if (currentScreenName.equals(Constants.IMAGE_SCREEN)) {		    
+		    //Go to the image list here, not the main screen...
+		    showImageList(getCurrentStoreName(), false, false);
+		    ScreenSingleton.getInstance().setCurrentScreenName(Constants.IMAGELIST_SCREEN);
+		    return true;
+		}
+=====================================================================
+Found a 3 line (27 tokens) duplication in the following files: 
+Starting at line 149 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/AlbumController.java
+Starting at line 46 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/BaseController.java
+Starting at line 84 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/screens/AlbumListScreen.java
+
+        String[] albumNames = getAlbumData().getAlbumNames();
+        for (int i = 0; i < albumNames.length; i++) {
+        	if (albumNames[i] != null) {
+=====================================================================
+Found a 8 line (25 tokens) duplication in the following files: 
+Starting at line 33 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/AlbumController.java
+Starting at line 47 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 37 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoListController.java
+Starting at line 19 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/sms/SmsReceiverController.java
+
+	public AlbumController(MainUIMidlet midlet, AlbumData albumData, AlbumListScreen albumListScreen) {
+		super(midlet, albumData, albumListScreen);
+	}
+	
+	/* (non-Javadoc)
+	 * @see ubc.midp.mobilephoto.core.ui.controller.ControllerInterface#handleCommand(javax.microedition.lcdui.Command, javax.microedition.lcdui.Displayable)
+	 */
+	public boolean handleCommand(Command command) {
+=====================================================================
+Found a 7 line (25 tokens) duplication in the following files: 
+Starting at line 130 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 324 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 329 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 52 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoListController.java
+
+			showImageList(getCurrentStoreName(), false, false);
+			ScreenSingleton.getInstance().setCurrentScreenName(Constants.IMAGELIST_SCREEN);
+			return true;
+
+		/** Case: Edit photo label
+		 *  [EF] Added in the scenario 02 */
+		} else if (label.equals("Edit Label")) {
+=====================================================================
+Found a 7 line (25 tokens) duplication in the following files: 
+Starting at line 130 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+Starting at line 168 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/ui/controller/PhotoController.java
+
+			showImageList(getCurrentStoreName(), false, false);
+			ScreenSingleton.getInstance().setCurrentScreenName(Constants.IMAGELIST_SCREEN);
+			return true;
+
+		/** Case: Edit photo label
+		 *  [EF] Added in the scenario 02 */
+		} else if (label.equals("Edit Label")) {
+=====================================================================
+Found a 6 line (25 tokens) duplication in the following files: 
+Starting at line 114 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/util/ImageUtil.java
+Starting at line 119 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-6/src/ubc/midp/mobilephoto/core/util/ImageUtil.java
+
+			String intString = iiString.substring(startIndex, endIndex);
+
+			// Get 'foreign' record ID corresponding to the image table
+			startIndex = endIndex + 1;
+			endIndex = iiString.indexOf(DELIMITER, startIndex);
+			String fidString = iiString.substring(startIndex, endIndex);

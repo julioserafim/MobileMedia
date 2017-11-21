@@ -1,0 +1,27 @@
+Nome do Sistema: MobilePhotoOO								
+Numero de Componentes (VS): 24								
+Component 	 LCOOM 	 CBC 	 DIT 	 NOA 	 NOO 	 LOC 	 NOC 	 WOC
+AddPhotoToAlbum 	0	0	2	4	3	21	0	4
+AlbumData 	0	0	1	3	11	72	0	22
+AlbumListScreen 	0	0	2	5	6	37	0	13
+BaseController 	0	0	1	7	19	288	0	35
+BaseThread 	0	0	1	0	2	9	0	2
+Constants 	0	0	1	8	0	10	0	0
+ControllerInterface 	0	0	1	0	2	4	1	6
+ImageAccessor 	0	0	1	8	14	244	0	34
+ImageData 	0	0	1	4	9	36	0	16
+ImageNotFoundException 	0	0	2	1	4	14	0	6
+ImagePathNotValidException 	0	0	3	1	4	14	0	6
+ImageUtil 	0	0	1	1	4	95	0	7
+InvalidArrayFormatException 	0	0	3	0	3	11	0	5
+InvalidImageDataException 	0	0	2	1	4	15	3	6
+InvalidImageFormatException 	0	0	3	0	3	10	0	5
+InvalidPhotoAlbumNameException 	0	0	2	0	2	7	0	3
+MainUIMidlet 	0	0	2	2	4	16	0	5
+NewAlbumScreen 	0	0	2	3	3	19	0	6
+NullAlbumDataReference 	0	0	2	1	4	14	0	6
+PersistenceMechanismException 	0	0	2	1	4	14	0	6
+PhotoListScreen 	0	0	2	4	4	21	0	10
+PhotoViewScreen 	0	0	2	4	4	35	0	8
+SplashScreen 	0	0	2	3	7	30	0	13
+UnavailablePhotoAlbumException 	0	0	2	1	4	14	0	6

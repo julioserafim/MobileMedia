@@ -1,0 +1,6 @@
+MIDlet-Jar-URL: MobilePhoto_V1_OO.jar
+MIDlet-Name: MobilePhoto V1_OO Midlet Suite
+MIDlet-Vendor: Midlet Suite Vendor
+MIDlet-Version: 1.0.0
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.1

@@ -1,0 +1,79 @@
+Found a 8 line (48 tokens) duplication in the following files: 
+Starting at line 88 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-01/src/ubc/midp/mobilephoto/core/ui/controller/BaseController.java
+Starting at line 258 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-01/src/ubc/midp/mobilephoto/core/ui/controller/BaseController.java
+
+		String[] albumNames = model.getAlbumNames();
+		for (int i = 0; i < albumNames.length; i++) {
+			if (albumNames[i] != null) {
+				//Add album name to menu list
+				albumListScreen.append(albumNames[i], null);
+				
+			}
+		}
+=====================================================================
+Found a 11 line (39 tokens) duplication in the following files: 
+Starting at line 54 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-01/src/ubc/midp/mobilephoto/core/ui/screens/AlbumListScreen.java
+Starting at line 53 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-01/src/ubc/midp/mobilephoto/core/ui/screens/PhotoListScreen.java
+
+	public AlbumListScreen(String arg0, int arg1, String[] arg2, Image[] arg3) {
+		super(arg0, arg1, arg2, arg3);
+	}
+	
+	
+	/**
+	 * Initialize the menu items for this screen
+	 * 
+	 */
+	public void initMenu() {
+		this.addCommand(exitCommand);
+=====================================================================
+Found a 6 line (34 tokens) duplication in the following files: 
+Starting at line 19 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-01/src/ubc/midp/mobilephoto/core/ui/screens/AddPhotoToAlbum.java
+Starting at line 29 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-01/src/ubc/midp/mobilephoto/core/ui/screens/NewAlbumScreen.java
+
+		ok = new Command("Save Add Photo", Command.SCREEN, 0);
+		cancel = new Command("Cancel", Command.EXIT, 1);
+		this.addCommand(ok);
+		this.addCommand(cancel);
+	}
+	public String getPhotoName(){
+=====================================================================
+Found a 6 line (32 tokens) duplication in the following files: 
+Starting at line 308 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-01/src/ubc/midp/mobilephoto/core/ui/controller/BaseController.java
+Starting at line 313 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-01/src/ubc/midp/mobilephoto/core/ui/controller/BaseController.java
+
+		}else if (currentScreenName.equals(Constants.NEWALBUM_SCREEN)) {
+			albumListScreen.repaintListAlbum(model.getAlbumNames());
+		    setCurrentScreen(albumListScreen);
+		    currentScreenName = Constants.ALBUMLIST_SCREEN;
+
+		}else if (currentScreenName.equals(Constants.CONFIRMDELETEALBUM_SCREEN)) {
+=====================================================================
+Found a 4 line (29 tokens) duplication in the following files: 
+Starting at line 106 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-01/src/ubc/midp/mobilephoto/core/util/ImageUtil.java
+Starting at line 117 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-01/src/ubc/midp/mobilephoto/core/util/ImageUtil.java
+
+		startIndex = endIndex + 1;
+		endIndex = iiString.indexOf(DELIMITER, startIndex);
+		if (endIndex == -1)
+			endIndex = iiString.length();
+=====================================================================
+Found a 3 line (27 tokens) duplication in the following files: 
+Starting at line 88 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-01/src/ubc/midp/mobilephoto/core/ui/controller/BaseController.java
+Starting at line 258 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-01/src/ubc/midp/mobilephoto/core/ui/controller/BaseController.java
+Starting at line 77 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-01/src/ubc/midp/mobilephoto/core/ui/screens/AlbumListScreen.java
+
+		String[] albumNames = model.getAlbumNames();
+		for (int i = 0; i < albumNames.length; i++) {
+			if (albumNames[i] != null) {
+=====================================================================
+Found a 6 line (25 tokens) duplication in the following files: 
+Starting at line 94 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-01/src/ubc/midp/mobilephoto/core/util/ImageUtil.java
+Starting at line 99 of /home/julioserafim/Documents/Linhas-de-Produto/MobilePhoto OOP-01/src/ubc/midp/mobilephoto/core/util/ImageUtil.java
+
+		String intString = iiString.substring(startIndex,endIndex);
+
+		//Get 'foreign' record ID corresponding to the image table
+		startIndex = endIndex + 1;
+		endIndex = iiString.indexOf(DELIMITER, startIndex);
+		String fidString = iiString.substring(startIndex, endIndex);
